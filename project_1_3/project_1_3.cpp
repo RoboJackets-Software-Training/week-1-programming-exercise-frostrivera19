@@ -48,6 +48,7 @@ int main() {
     y[i] += w[2] * x[i + 1];
   }
 
+  std::cout << "Hello" << std::endl;
 
   // =========== END ===========
 
