@@ -1,11 +1,13 @@
 #include <iostream>
 #include <vector>
 
-std::vector<double> readInVector(std::string s) {
+std::vector<double> readInVector(std::string s)
+{
   int prev_location = 0;
   int next_location = 0;
   std::vector<double> result;
-  while(s.find(',', prev_location) != std::string::npos) {
+  while (s.find(',', prev_location) != std::string::npos)
+  {
     next_location = s.find(',', prev_location);
     //std::cout << "prev_location: " << prev_location << std::endl;
     //std::cout << "next_location: " << next_location << std::endl;
@@ -19,7 +21,18 @@ std::vector<double> readInVector(std::string s) {
   return result;
 }
 
-int main() {
+void printVector(std::vector<double> vec)
+{
+  std::cout << "Vector: [";
+  for (int i = 0; i < vec.size(); i++)
+  {
+    std::cout << vec[i] << ",";
+  }
+  std::cout << "]" << std::endl;
+}
+
+int main()
+{
   std::vector<double> x;
   std::vector<double> w;
   std::vector<double> y;
@@ -27,7 +40,8 @@ int main() {
 
   std::string s;
   std::cin >> s;
-  if(s == "false") {
+  if (s == "false")
+  {
     pack_with_zeros = false;
   }
   std::cin >> s;
@@ -38,38 +52,55 @@ int main() {
   // TODO write your code here
   // =========== START =========
 
+  printVector(w);
+  printVector(x);
+
   int kSize = w.size();
   int vSize = x.size();
 
-  y.push_back(w[0] * 0);
-  y[0] += w[1] * x[0];
-  y[0] += w[2] * x[0 + 1];
-
-  for (int i = 0; i < x.size(); i++) {
-
-  	if ()
-
-    y.push_back(w[0] * x[i - 1]);
-    y[i] += w[1] * x[i];
-    y[i] += w[2] * x[i + 1];
+  for (int v = 0; v < vSize; v++)
+  {
+    y.push_back(0);
+    for (int k = 0; k < kSize; k++)
+    {
+      int vectorIndexToMultiply = v - kSize / 2 + k;
+      if (vectorIndexToMultiply < 0)
+      {
+        if (pack_with_zeros == false)
+        {
+          y[v] += w[k] * x[0];
+        }
+        else
+        {
+          continue;
+        }
+      }
+      else if (vectorIndexToMultiply >= vSize)
+      {
+        if (pack_with_zeros == false)
+        {
+          y[v] += w[k] * x[vSize - 1];
+        }
+        else {
+          continue;
+        }
+      }
+      else
+      {
+        y[v] += w[k] * x[vectorIndexToMultiply];
+      }
+    }
   }
 
-  int end = x.size() - 1;
-
-  y.push_back(w[0] * x[end - 1]);
-  y[end] += w[1] * x[end];
-  y[end] += w[2] * 0;
-
   std::cout << "{";
-  for (int i = 0; i < y.size() - 1; i++) {
-  	std::cout << y[i] << ", ";
+  for (int i = 0; i < y.size() - 1; i++)
+  {
+    std::cout << y[i] << ", ";
   }
   std::cout << y[y.size() - 1];
   std::cout << "}" << std::endl;
-
 
   // =========== END ===========
 
   return 0;
 }
-
