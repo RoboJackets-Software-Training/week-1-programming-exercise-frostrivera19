@@ -38,17 +38,35 @@ int main() {
   // TODO write your code here
   // =========== START =========
 
-  y[0] += w[0] * 0;
+  int kSize = w.size();
+  int vSize = x.size();
+
+  y.push_back(w[0] * 0);
   y[0] += w[1] * x[0];
   y[0] += w[2] * x[0 + 1];
 
-  for (int i = 1; i < x.size(); i++) {
-    y[i] += w[0] * x[i - 1];
+  for (int i = 0; i < x.size(); i++) {
+
+  	if ()
+
+    y.push_back(w[0] * x[i - 1]);
     y[i] += w[1] * x[i];
     y[i] += w[2] * x[i + 1];
   }
 
-  std::cout << "Hello" << std::endl;
+  int end = x.size() - 1;
+
+  y.push_back(w[0] * x[end - 1]);
+  y[end] += w[1] * x[end];
+  y[end] += w[2] * 0;
+
+  std::cout << "{";
+  for (int i = 0; i < y.size() - 1; i++) {
+  	std::cout << y[i] << ", ";
+  }
+  std::cout << y[y.size() - 1];
+  std::cout << "}" << std::endl;
+
 
   // =========== END ===========
 
