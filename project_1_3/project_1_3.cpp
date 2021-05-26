@@ -52,8 +52,6 @@ int main()
   // TODO write your code here
   // =========== START =========
 
-  printVector(w);
-  printVector(x);
 
   int kSize = w.size();
   int vSize = x.size();
