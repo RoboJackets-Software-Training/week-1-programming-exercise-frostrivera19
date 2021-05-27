@@ -23,12 +23,12 @@ std::vector<double> readInVector(std::string s)
 
 void printVector(std::vector<double> vec)
 {
-  std::cout << "Vector: [";
-  for (int i = 0; i < vec.size(); i++)
+  std::cout << "{";
+  for (int i = 0; i < vec.size() - 1; i++)
   {
     std::cout << vec[i] << ",";
   }
-  std::cout << "]" << std::endl;
+  std::cout << vec[vec.size() - 1] << "}" << std::endl;
 }
 
 int main()
@@ -51,6 +51,12 @@ int main()
 
   // TODO write your code here
   // =========== START =========
+  
+  std::cout << "x: ";
+  printVector(x);
+  std::cout << "w: ";
+  printVector(w);
+  
 
 
   int kSize = w.size();
@@ -89,14 +95,9 @@ int main()
       }
     }
   }
-
-  std::cout << "{";
-  for (int i = 0; i < y.size() - 1; i++)
-  {
-    std::cout << y[i] << ", ";
-  }
-  std::cout << y[y.size() - 1];
-  std::cout << "}" << std::endl;
+  
+  std::cout << "y: ";
+  printVector(y);
 
   // =========== END ===========
 
