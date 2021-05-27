@@ -96,7 +96,6 @@ int main()
     }
   }
   
-  std::cout << "y: ";
   printVector(y);
 
   // =========== END ===========
